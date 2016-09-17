@@ -14,7 +14,7 @@
     You should have received a copy of the GNU General Public License
     along with VK/KittenPHP-DB-Engine.  If not, see <http://www.gnu.org/licenses/>.
 
-    This program is released under the GPL with the additional exemption 
+    This program is released under the GPL with the additional exemption
     that compiling, linking, and/or using OpenSSL is allowed.
     You are free to remove this exemption from derived works.
 
@@ -31,10 +31,10 @@
 static char buff[BUFF_LEN];
 
 char *estrdup (const char *s) {
-    char *d = malloc (strlen (s) + 1);   
-    if (d == NULL) return NULL;          
-    strcpy (d,s);                        
-    return d;                            
+    char *d = malloc (strlen (s) + 1);
+    if (d == NULL) return NULL;
+    strcpy (d,s);
+    return d;
 }
 
 char *do_flex (const char *name, int name_len, const char *case_name, int case_name_len, int sex, const char *type, int type_len, int lang_id) {
@@ -75,7 +75,7 @@ char *do_flex (const char *name, int name_len, const char *case_name, int case_n
     return estrdup (name);
   }
   assert (ca >= 0 && ca < cur_lang->cases_num);
-  
+
   int p = 0;
   int wp = 0;
   while (p < name_len) {
@@ -83,7 +83,7 @@ char *do_flex (const char *name, int name_len, const char *case_name, int case_n
     while (pp < name_len && name[pp] != '-') {
       pp++;
     }
-    int hyphen = (name[pp] == '-'); 
+    int hyphen = (name[pp] == '-');
     int tt = t;
     int best = -1;
     int save_pp = pp;
@@ -93,7 +93,7 @@ char *do_flex (const char *name, int name_len, const char *case_name, int case_n
       const char *fle = cur_lang->flexible_symbols;
       while (*fle) {
         if (*fle == name[pp - 1]) {
-          isf = 1; 
+          isf = 1;
           break;
         }
         fle ++;
@@ -102,7 +102,7 @@ char *do_flex (const char *name, int name_len, const char *case_name, int case_n
     while (1 && isf) {
       assert (tt >= 0);
       if (cur_lang->nodes[tt].tail_len >= 0 && (!cur_lang->nodes[tt].hyphen || hyphen)) {
-        best = tt; 
+        best = tt;
       }
       unsigned char c;
       if (pp == p - 1) {
@@ -141,7 +141,7 @@ char *do_flex (const char *name, int name_len, const char *case_name, int case_n
       } else {
         tt = new_tt;
       }
-    }  
+    }
     if (best == -1) {
       memcpy (buff + wp, name + p, save_pp - p);
       wp += (save_pp - p);
@@ -173,6 +173,6 @@ char *do_flex (const char *name, int name_len, const char *case_name, int case_n
     }
     p = save_pp + 1;
   }
-  
+
   return estrdup (buff);
 }
