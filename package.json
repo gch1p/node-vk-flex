@@ -1,15 +1,25 @@
 {
-  "description": "VK Name Flex for Node.js",
-  "devDependencies": {},
-  "gypfile": true,
+  "name": "vk-flex",
+  "version": "1.0.0",
+  "description": "vk-flex for node.js",
   "main": "index.js",
-  "name": "node-vk-flex",
-  "optionalDependencies": {},
-  "private": true,
-  "readme": "ERROR: No README data found!",
   "scripts": {
-    "install": "node-gyp rebuild",
-    "test": "node index.js"
+    "test": "test.js",
+    "install": "node-gyp rebuild"
   },
-  "version": "1.0.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gch1p/node-vk-flex.git"
+  },
+  "keywords": [
+    "vk",
+    "flex"
+  ],
+  "author": "",
+  "license": "ISC",
+  "gypfile": true,
+  "bugs": {
+    "url": "https://github.com/gch1p/node-vk-flex/issues"
+  },
+  "homepage": "https://github.com/gch1p/node-vk-flex#readme"
 }
