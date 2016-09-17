@@ -23,6 +23,7 @@
 */
 
 #include <string.h>
+#include <stdlib.h>
 #include <assert.h>
 #include "vkext_flex.h"
 #include "vkext_flex_auto.c"

@@ -27,10 +27,18 @@ void flex(const FunctionCallbackInfo<Value>& args) {
   string typeString(*typeArg);
   string ctypeStringWindows1251 = utf2cp(typeString);
 
-  int sex = args[1]->NumberValue();
-  int lang = args[4]->NumberValue();
+  int sex = (int)args[1]->NumberValue();
+  int lang = (int)args[4]->NumberValue();
 
-  char *result = do_flex(nameStringWindows1251.c_str(), nameStringWindows1251.length(), caseStringWindows1251.c_str(), caseStringWindows1251.length(), sex, ctypeStringWindows1251.c_str(), ctypeStringWindows1251.length(), lang);
+  char *result = do_flex(
+    nameStringWindows1251.c_str(),
+    nameStringWindows1251.length(),
+    caseStringWindows1251.c_str(),
+    caseStringWindows1251.length(),
+    sex,
+    ctypeStringWindows1251.c_str(),
+    ctypeStringWindows1251.length(),
+    lang);
 
   string resultStringWindows1251(result);
   string resultString = cp2utf(resultStringWindows1251);
