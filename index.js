@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 //Gen, //родительный падеж (нет кого? чего?)
 //Dat, //дательный падеж (дать кому? чему?)
@@ -11,7 +11,7 @@
 //Equ,
 //Com
 
-const nativeModule = require('./build/Release/vkext_flex');
+const nativeModule = require('./build/Release/vkext_flex')
 nativeModule.languageCode = 0
 nativeModule.initializeLanguage = function(language) {
   if (language == 'ua') {
@@ -26,6 +26,3 @@ nativeModule.flexSurname = function(surname, sex, name_case) {
 }
 
 module.exports = nativeModule
-
-console.log(nativeModule.flexName('Дмитрий', 2, "Gen"));
-console.log(nativeModule.flexSurname('Кондратьев', 2, "Gen"));
