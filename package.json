@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "vk-flex for node.js",
   "main": "index.js",
-  "scripts": {
-    "test": "test.js",
-    "install": "node-gyp rebuild"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gch1p/node-vk-flex.git"
@@ -17,7 +13,6 @@
   ],
   "author": "",
   "license": "ISC",
-  "gypfile": true,
   "bugs": {
     "url": "https://github.com/gch1p/node-vk-flex/issues"
   },
