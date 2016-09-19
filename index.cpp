@@ -18,9 +18,9 @@ void flex(const FunctionCallbackInfo<Value>& args) {
   String::Utf8Value nameArg(args[0]);
   string nameString(*nameArg);
   string nameStringWindows1251 = utf2cp(nameString);
-
-  String::Utf8Value сaseArg(args[2]);
-  string caseString(*сaseArg);
+  
+  String::Utf8Value caseArg(args[2]);
+  string caseString(*caseArg);
   string caseStringWindows1251 = utf2cp(caseString);
 
   String::Utf8Value typeArg(args[3]);
