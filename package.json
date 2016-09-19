@@ -9,7 +9,7 @@
   },
   "scripts": {
     "preinstall": "",
-    "install": ""
+    "install": "node -v"
   },
   "keywords": [
     "vk",
