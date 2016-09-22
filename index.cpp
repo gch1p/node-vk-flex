@@ -2,6 +2,7 @@
 #include <v8.h>
 
 #include <iostream>
+#include <stdlib.h>
 #include "iconvlite.h"
 #include "vkext_flex.h"
 
@@ -18,7 +19,7 @@ void flex(const FunctionCallbackInfo<Value>& args) {
   String::Utf8Value nameArg(args[0]);
   string nameString(*nameArg);
   string nameStringWindows1251 = utf2cp(nameString);
-  
+
   String::Utf8Value caseArg(args[2]);
   string caseString(*caseArg);
   string caseStringWindows1251 = utf2cp(caseString);
@@ -41,6 +42,8 @@ void flex(const FunctionCallbackInfo<Value>& args) {
     lang);
 
   string resultStringWindows1251(result);
+  free(result);
+
   string resultString = cp2utf(resultStringWindows1251);
 
   args.GetReturnValue().Set(String::NewFromUtf8(isolate, resultString.c_str()));
