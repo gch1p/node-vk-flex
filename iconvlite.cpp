@@ -36,16 +36,17 @@ static void cp2utf1(char *out, const char *in) {
             *out++ = *in++;
     *out = 0;
 }
+
 string cp2utf(string s) {
     int c,i;
     int len = s.size();
     string ns;
-    for(i=0; i<len; i++) {
-        c=s[i];
+    for (i = 0; i < len; i++) {
+        c = s[i];
         char buf[4], in[2] = {0, 0};
         *in = c;
         cp2utf1(buf, in);
-        ns+=string(buf);
+        ns += string(buf);
     }
    return ns;
 }
@@ -53,7 +54,7 @@ string cp2utf(string s) {
 string utf2cp(string s) {
     size_t len = s.size();
     const char *buff = s.c_str();
-    char *output = new char[len];
+    char output[len];
     convert_utf8_to_windows1251(buff, output, len);
     string ns(output);
     return ns;
@@ -61,45 +62,45 @@ string utf2cp(string s) {
 
 int convert_utf8_to_windows1251(const char* utf8, char* windows1251, size_t n)
 {
-        int i = 0;
-        int j = 0;
-        for(; i < (int)n && utf8[i] != 0; ++i) {
-                char prefix = utf8[i];
-                char suffix = utf8[i+1];
-                if ((prefix & 0x80) == 0) {
-                        windows1251[j] = (char)prefix;
-                        ++j;
-                } else if ((~prefix) & 0x20) {
-                        int first5bit = prefix & 0x1F;
-                        first5bit <<= 6;
-                        int sec6bit = suffix & 0x3F;
-                        int unicode_char = first5bit + sec6bit;
+    int i = 0;
+    int j = 0;
+    for(; i < (int)n && utf8[i] != 0; ++i) {
+        char prefix = utf8[i];
+        char suffix = utf8[i+1];
+        if ((prefix & 0x80) == 0) {
+            windows1251[j] = (char)prefix;
+            ++j;
+        } else if ((~prefix) & 0x20) {
+            int first5bit = prefix & 0x1F;
+            first5bit <<= 6;
+            int sec6bit = suffix & 0x3F;
+            int unicode_char = first5bit + sec6bit;
 
-                        if ( unicode_char >= 0x410 && unicode_char <= 0x44F ) {
-                                windows1251[j] = (char)(unicode_char - 0x350);
-                        } else if (unicode_char >= 0x80 && unicode_char <= 0xFF) {
-                                windows1251[j] = (char)(unicode_char);
-                        } else if (unicode_char >= 0x402 && unicode_char <= 0x403) {
-                                windows1251[j] = (char)(unicode_char - 0x382);
-                        } else {
-                                int count = sizeof(g_letters) / sizeof(Letter);
-                                for (int k = 0; k < count; ++k) {
-                                        if (unicode_char == g_letters[k].unicode) {
-                                                windows1251[j] = g_letters[k].win1251;
-                                                goto NEXT_LETTER;
-                                        }
-                                }
-                                // can't convert this char
-                                return 0;
-                        }
-NEXT_LETTER:
-                        ++i;
-                        ++j;
-                } else {
-                        // can't convert this chars
-                        return 0;
+            if ( unicode_char >= 0x410 && unicode_char <= 0x44F ) {
+                windows1251[j] = (char)(unicode_char - 0x350);
+            } else if (unicode_char >= 0x80 && unicode_char <= 0xFF) {
+                windows1251[j] = (char)(unicode_char);
+            } else if (unicode_char >= 0x402 && unicode_char <= 0x403) {
+                windows1251[j] = (char)(unicode_char - 0x382);
+            } else {
+                int count = sizeof(g_letters) / sizeof(Letter);
+                for (int k = 0; k < count; ++k) {
+                    if (unicode_char == g_letters[k].unicode) {
+                        windows1251[j] = g_letters[k].win1251;
+                        goto NEXT_LETTER;
+                    }
                 }
+                // can't convert this char
+                return 0;
+            }
+NEXT_LETTER:
+            ++i;
+            ++j;
+        } else {
+            // can't convert this chars
+            return 0;
         }
-        windows1251[j] = 0;
-        return 1;
+    }
+    windows1251[j] = 0;
+    return 1;
 }
