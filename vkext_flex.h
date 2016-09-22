@@ -14,7 +14,7 @@
     You should have received a copy of the GNU General Public License
     along with VK/KittenPHP-DB-Engine.  If not, see <http://www.gnu.org/licenses/>.
 
-    This program is released under the GPL with the additional exemption 
+    This program is released under the GPL with the additional exemption
     that compiling, linking, and/or using OpenSSL is allowed.
     You are free to remove this exemption from derived works.
 
@@ -30,10 +30,10 @@
 #if defined __cplusplus
 extern "C" {
 #endif
-    
+
 #include <stdio.h>
 
-    
+
 struct vk_node {
   short tail_len;
   short hyphen;
@@ -52,9 +52,9 @@ struct lang {
   const char **endings;
   struct vk_node nodes[];
 };
-    
-char *do_flex (const char *name, int name_len, const char *case_name, int case_name_len, int sex, const char *type, int type_len, int lang_id);
-    
+
+char *do_flex (const char *name, int name_len, const char *case_name, int case_name_len, int sex, const char *type, int lang_id);
+
 #if defined __cplusplus
 };
 #endif
