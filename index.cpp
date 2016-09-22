@@ -26,9 +26,6 @@ void flex(const FunctionCallbackInfo<Value>& args) {
     int sex = (int)args[1]->NumberValue();
     int lang = (int)args[4]->NumberValue();
 
-    printf("c_str length: %ld\n", strlen(nameStringWindows1251.c_str()));
-    printf("c++ length: %ld\n", nameStringWindows1251.size());
-
     char *result = do_flex(
         nameStringWindows1251.c_str(),
         nameStringWindows1251.length(),
