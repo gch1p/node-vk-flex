@@ -54,9 +54,10 @@ string cp2utf(string s) {
 string utf2cp(string s) {
     size_t len = s.size();
     const char *buff = s.c_str();
-    char output[len];
+    char* output = new char[len];
     convert_utf8_to_windows1251(buff, output, len);
     string ns(output);
+    delete[] output;
     return ns;
 }
 
