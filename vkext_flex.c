@@ -38,7 +38,7 @@ char *estrdup (const char *s) {
     return d;
 }
 
-char *do_flex (const char *name, int name_len, const char *case_name, int case_name_len, int sex, const char *type, int type_len, int lang_id) {
+char *do_flex (const char *name, int name_len, const char *case_name, int case_name_len, int sex, const char *type, int lang_id) {
   if (name_len  > (1 << 10)) {
     return estrdup (name);
   }
