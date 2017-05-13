@@ -6,7 +6,7 @@
 // Ins творительный падеж (горжусь кем? чем?)
 // Abl предложный падеж (думаю о ком? о чём?)
 
-const vkflex = require('./build/Release/vkext_flex')
+const vkflex = require('./build/Release/vkext_flex.node')
 let langCode = 0
 
 module.exports = {
