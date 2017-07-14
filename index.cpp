@@ -25,6 +25,7 @@ void flex(const FunctionCallbackInfo<Value>& args) {
 
     int sex = (int)args[1]->NumberValue();
     int lang = (int)args[4]->NumberValue();
+    int success = 0;
 
     char *result = do_flex(
         nameStringWindows1251.c_str(),
@@ -33,14 +34,19 @@ void flex(const FunctionCallbackInfo<Value>& args) {
         caseStringWindows1251.length(),
         sex,
         ctypeStringWindows1251.c_str(),
-        lang);
+        lang,
+        &success);
 
-    std::string resultStringWindows1251(result);
-    free(result);
+    if (!success) {
+        free(result);
+        args.GetReturnValue().Set(String::NewFromUtf8(isolate, nameString.c_str()));
+    } else {
+        std::string resultStringWindows1251(result);
+        free(result);
 
-    std::string resultString = cp2utf(resultStringWindows1251);
-
-    args.GetReturnValue().Set(String::NewFromUtf8(isolate, resultString.c_str()));
+        std::string resultString = cp2utf(resultStringWindows1251);
+        args.GetReturnValue().Set(String::NewFromUtf8(isolate, resultString.c_str()));
+    }
 }
 
 void Init(Handle<Object> exports) {

@@ -38,7 +38,7 @@ char *estrdup (const char *s) {
     return d;
 }
 
-char *do_flex (const char *name, int name_len, const char *case_name, int case_name_len, int sex, const char *type, int lang_id) {
+char *do_flex (const char *name, int name_len, const char *case_name, int case_name_len, int sex, const char *type, int lang_id, int *ok) {
   if (name_len  > (1 << 10)) {
     return estrdup (name);
   }
@@ -174,6 +174,8 @@ char *do_flex (const char *name, int name_len, const char *case_name, int case_n
     }
     p = save_pp + 1;
   }
+
+  *ok = wp > 0 ? 1 : 0;
 
   return estrdup (buff);
 }

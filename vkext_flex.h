@@ -53,7 +53,7 @@ struct lang {
   struct vk_node nodes[];
 };
 
-char *do_flex (const char *name, int name_len, const char *case_name, int case_name_len, int sex, const char *type, int lang_id);
+char *do_flex (const char *name, int name_len, const char *case_name, int case_name_len, int sex, const char *type, int lang_id, int *ok);
 
 #if defined __cplusplus
 };
