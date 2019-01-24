@@ -49,7 +49,7 @@ void flex(const FunctionCallbackInfo<Value>& args) {
     }
 }
 
-void Init(Handle<Object> exports) {
+void Init(Local<Object> exports) {
     NODE_SET_METHOD(exports, "flex", flex);
 }
 
