@@ -1,6 +1,6 @@
 {
   "name": "vk-flex",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "vk-flex for node.js",
   "main": "index.js",
   "repository": {
